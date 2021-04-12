@@ -1,0 +1,53 @@
+#summary__box{
+    display:flex;
+    flex-direction: column;
+
+    .summary__header{
+        display:flex;
+        justify-content: space-between;
+        padding:1.5em 0;
+
+        .summary__options{
+            background:none;
+            border:none;
+            color:gray;
+            font-size: 0.6em;
+            font-weight: 700;
+            outline:none;
+    
+            option{
+                background: var(--theme-page-background);
+                border:0px;
+                color: var(--theme-page-text);
+                outline:0px;
+            }
+        }
+    }
+    
+    .summary__goal{
+        display:flex;
+        flex-direction:column;
+
+        .summary__completed{
+            display:flex;
+            justify-content: space-between;
+
+            &>p{
+                color:gray;
+                font-weight: 600;
+                font-size:0.6em;
+            }
+            &>span{
+                font-size: 0.8em;
+            }
+        }
+
+        &>progress{
+            margin-top: 0.3em;
+            height: 0.4em;
+            width:100%;
+        }
+    }
+
+
+}
