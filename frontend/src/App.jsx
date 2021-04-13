@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './Redux/Storage/ConfigureStore';
 
 import './Styles/Theme.scss';
 import './App.scss';
@@ -11,8 +13,10 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      <Header />
-      <Summary />
+      <Provider store={store}>
+        <Header />
+        <Summary />
+      </Provider>
     </div>
   );
 }

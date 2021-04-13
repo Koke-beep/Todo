@@ -1,36 +1,77 @@
-import React from 'react';
+/* eslint-disable no-debugger */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 import './SummaryList.scss';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import loadTodo from '../../../Redux/Actions/ActionCreator';
 
-export default function Summarylist() {
+function SummaryList({ data: { taskStatus }, actions }) {
+  debugger;
+  console.log('Status', taskStatus);
+
+  useEffect(() => {
+    debugger;
+    actions.loadTodo();
+  }, []);
+
   return (
+
     <div id="summary__list">
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Ongoing</p>
-        <span className="summary__list-done">16</span>
-      </div>
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Overdue</p>
-        <span className="summary__list-done">16</span>
-      </div>
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Task</p>
-        <span className="summary__list-done">63</span>
-        <span className="summary__list-total">/99</span>
-      </div>
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Projects</p>
-        <span className="summary__list-done">9</span>
-        <span className="summary__list-total">/13</span>
-      </div>
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Reminder</p>
-        <span className="summary__list-done">44</span>
-        <span className="summary__list-total">/45</span>
-      </div>
-      <div className="summary__sectionBox">
-        <p className="summary__list-subtitle">Notes</p>
-        <span className="summary__list-done">167</span>
-      </div>
+      {taskStatus ? (
+        <>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Ondoing</p>
+            <span className="summary__list-done">{taskStatus?.ondoing}</span>
+          </div>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Overdue</p>
+            <span className="summary__list-done">a</span>
+          </div>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Task</p>
+            <span className="summary__list-done">a</span>
+            <span className="summary__list-total">
+              /s
+            </span>
+          </div>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Projects</p>
+            <span className="summary__list-done">j</span>
+            <span className="summary__list-total">
+              /l
+            </span>
+          </div>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Reminder</p>
+            <span className="summary__list-done">r</span>
+            <span className="summary__list-total">
+              /u
+            </span>
+          </div>
+          <div className="summary__sectionBox">
+            <p className="summary__list-subtitle">Notes</p>
+            <span className="summary__list-done">n</span>
+          </div>
+        </>
+      ) : (<div />)}
+
     </div>
   );
 }
+
+function mapStateToProps({ taskStatus }) {
+  debugger;
+  return {
+    data: taskStatus,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ loadTodo }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SummaryList);
