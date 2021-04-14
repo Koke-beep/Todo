@@ -7,6 +7,7 @@ import './App.scss';
 
 import Header from './Components/Header/Header';
 import Summary from './Components/Summary/Summary';
+import DayNightSwitch from './Components/DayNightSwitch/DayNightSwitch';
 
 function App() {
   const theme = 'dark';
@@ -16,6 +17,7 @@ function App() {
       <Provider store={store}>
         <Header />
         <Summary />
+        <DayNightSwitch />
       </Provider>
     </div>
   );
