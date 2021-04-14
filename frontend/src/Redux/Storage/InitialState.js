@@ -1,20 +1,20 @@
 const initialState = {
   taskStatus: {
-    ondoing: 16,
-    overdue: 8,
-    task: {
+    Ondoing: 16,
+    Overdue: 8,
+    Task: {
       done: 26,
       unfinished: 42,
     },
-    project: {
+    Project: {
       done: 9,
       unfinished: 13,
     },
-    reminder: {
+    Reminder: {
       done: 33,
       unfinished: 45,
     },
-    notes: 143,
+    Notes: 143,
   },
 };
 export default initialState;
