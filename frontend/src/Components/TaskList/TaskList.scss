@@ -1,7 +1,6 @@
 #taskList__box{
     display:flex;
     flex-direction:column;
-    position: relative;
     
     button{
         border: 0;
@@ -10,17 +9,17 @@
         cursor:pointer;
         outline:none;
     }
-
+    
     .taskList__categories{
         display:flex;        
         justify-content: space-between;
-        margin:1em 0;    
+        margin:1em ;    
         
         &>button{
             font-size: 2vw;
         }
-    }
-    
+    }   
+
     .taskList__detail{
         border: 1px solid gray;
         border-radius:1.5em;
@@ -31,7 +30,7 @@
         margin: 1em 0;
         padding: 1em;
         position:relative;
-        
+
         &>div{
             display:flex;
             flex-direction:column;
@@ -42,23 +41,40 @@
             }
 
             &>button{               
-                font-size: 0.9em;
+                font-size: 0.9em;                
                 font-weight: bolder;
                 letter-spacing: 0.1em;
                 margin-top:2em;               
                 text-align:left;
             }
         }
-
-        &--new{
-           &>button{
-               border:1px dashed gray;
-               border-radius: 1.5em;
-               width:100%;
-               font-size: 1em;
-           }
-        }
     }
 
-   
+    .taskList__newTask{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        transform:translate(-2.5em,12em);
+        width:100vw;
+        top:0;
+        transition: top 0.8s;
+        
+        &>button{
+            border-top:4px solid #00b4d8;
+            border-radius: 1.5em;
+            font-size: 1.5em;
+            width:100%;
+            color:#00b4d8;
+
+            &:active{
+                border-top:2px solid #00b4d8; 
+            }
+        }           
+    }  
+
+}
+
+.prueba{
+    height:100vh;
+    background:yellow;
 }
