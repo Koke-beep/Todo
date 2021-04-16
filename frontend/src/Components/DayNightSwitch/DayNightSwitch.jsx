@@ -9,7 +9,6 @@ export default function switchColor() {
   const [switchColor, setSwitchColor] = useState(true);
 
   function hadleSwitchColor(switchStatus) {
-    const colorTheme = switchStatus === true ? 'dark' : 'light';
     const appContainer = document.querySelector('.App').classList;
 
     if (switchStatus === true) {
