@@ -1,30 +1,31 @@
 .switch{
-    position:relative;
-    display:block;
-    width:90px;
-    height:55px;
+    display:block;   
+    height:1.5em;
     margin-bottom:30px;
+    position:relative;
+    width:3em; 
+    margin-top: 1.5em;
+    margin-right:1em;
 }
 
 .slider{
-    position:absolute;
-    cursor:pointer;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
     background:white;
+    bottom:0;
+    border: 3px solid gray;
+    cursor:pointer;
+    left:0;
+    position:absolute;
+    right:0;
     transition: .5s;
-    border: 3px solid white;
-    box-shadow:1px 1px 1px rgba(0,0,0,0.1);    
+    top:0;
 }
 
 .slider:before{
-    position:absolute;
-    content:"";
-    bottom: 14px;
-    top:8px;
     background-color: rgb(175,175,175);
+    bottom: 9px;
+    content:"";
+    position:absolute;
+    top:3px;
     transition: 0.5s;
 }
 
@@ -33,12 +34,12 @@
 }
 
 input:checked + .slider{
-background-color: black;
+    background-color: black;
 }
 
 input:checked+.slider:before{
-    transform: translateX(47px) rotateZ(45deg);
     background:yellow;
+    transform: translateX(1.5em) rotateZ(45deg);
 }
 
 .slider.round{
@@ -46,9 +47,9 @@ input:checked+.slider:before{
 }
 
 .slider.round:before{
-    width:43%;
-    height:43%;
     border-top-left-radius:50px;
     border-top-right-radius:50px;
+    height:38%;
     transform:rotateZ(-45deg);    
+    width:38%;
 }
