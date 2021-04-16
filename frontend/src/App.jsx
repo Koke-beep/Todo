@@ -7,15 +7,15 @@ import './App.scss';
 
 import Header from './Components/Header/Header';
 import Summary from './Components/Summary/Summary';
+import TaskList from './Components/TaskList/TaskList';
 
 function App() {
-  const theme = 'dark';
-
   return (
-    <div className={`App ${theme}`}>
+    <div className="App dark">
       <Provider store={store}>
         <Header />
         <Summary />
+        <TaskList />
       </Provider>
     </div>
   );
