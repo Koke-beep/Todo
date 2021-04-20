@@ -8,6 +8,7 @@ import './App.scss';
 import Header from './Components/Header/Header';
 import Summary from './Components/Summary/Summary';
 import TaskList from './Components/TaskList/TaskList';
+import NewTaskForm from './Components/NewTaskForm/NewTaskForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Summary />
         <TaskList />
+        <NewTaskForm />
       </Provider>
     </div>
   );

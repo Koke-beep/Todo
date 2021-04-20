@@ -1,14 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-multi-assign */
 import React from 'react';
 import './TaskList.scss';
 
 export default function taskList() {
-  function openNewTask() {
-    const newTask = document.querySelector('.taskList__newTask').style.top = '-500px';
-    console.log(newTask);
-  }
-
   return (
     <>
       <section id="taskList__box">
@@ -25,10 +18,6 @@ export default function taskList() {
           </div>
         </div>
 
-        <div className="taskList__newTask">
-          <button type="button" onClick={() => openNewTask()}>+</button>
-          <h1 className="prueba">hi</h1>
-        </div>
       </section>
     </>
   );
