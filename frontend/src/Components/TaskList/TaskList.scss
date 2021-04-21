@@ -8,28 +8,24 @@
         color: var(--theme-page-text);
         cursor:pointer;
         outline:none;
+        font-size: 0.7em;
     }
     
     .taskList__categories{
         display:flex;        
         justify-content: space-between;
-        margin:1em ;    
-        
-        &>button{
-            font-size: 0.7em;
-        }
+        margin:1em;    
     }   
 
     .taskList__detail{
-        border: 1px solid gray;
+        border: 1.5px solid gray;  
         border-radius:1.5em;
         color:gray;    
         display:flex;
         flex-direction:column;
         font-size: 0.5em;
         margin: 1em 0;
-        padding: 1em;
-        position:relative;
+        padding: 1em;        
 
         &>div{
             display:flex;
@@ -38,11 +34,11 @@
             &>span{
                 margin-bottom:0.5em;
                 position:absolute;
+                font-size:1.1em;
             }
 
             &>button{               
-                font-size: 0.9em;                
-                font-weight: bolder;
+                font-size: 1.2em;                
                 letter-spacing: 0.1em;
                 margin-top:2em;               
                 text-align:left;
