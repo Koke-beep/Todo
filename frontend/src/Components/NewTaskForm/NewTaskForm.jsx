@@ -11,8 +11,8 @@ export default function newTaskForm() {
   function toggleView(open) {
     let taskListBox = document.querySelector('.taskList__newTask');
 
-    taskListBox = open === true ? taskListBox.style.bottom = '93vh'
-      : taskListBox.style.bottom = '30vh';
+    taskListBox = open === true ? taskListBox.style.bottom = '0'
+      : taskListBox.style.bottom = '-88vh';
     return taskListBox;
   }
   const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 30), 16));
