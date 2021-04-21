@@ -1,15 +1,17 @@
 .taskList__newTask{
     position:absolute;
     left:0;
-    bottom:0;
+    bottom:-100;
     width:100vw;    
     z-index:5;
     transition: bottom 0.8s;
+    overflow:hidden;
+    user-select:none;
 
     &>button{
         border:none;
         border-top:4px solid #00b4d8;
-        border-radius: 1.5em;
+        border-radius: 30px;
         background:var(--theme-page-background);
         color:#00b4d8;
         cursor:pointer;
@@ -24,15 +26,97 @@
 
     .taskList__data{
         padding:0 40px;
+        font-size:0.7em;
+
+        .taskList__fields{ 
+            margin-top:3em;          
+            margin-bottom:3em;
+
+           label>input{
+                background:transparent;
+                border:none;
+                border-bottom: 2px solid gray;
+                color:var(--theme-page-text);
+                font-size: 1em;
+                height: 1.5em;
+                margin-top:0.7em;
+                outline:none;
+                width:100%;
+            }
+        }
+
+        .taskList__categories{
+            margin-top:1em;
+            color:gray;
+
+            .category{
+            align-items:center;
+            display:flex;
+            margin-bottom:1.5em;
+
+                .taskList__color{
+                    background-color:white;
+                    height:0.2em;
+                    margin-right:0.5em;
+                    width:0.8em;
+                }
+
+                &>label{
+                    align-items: center;
+                    cursor:pointer;
+                    display:flex;
+                    justify-content:space-between;
+                    width:100%;
+                }
+            }
+        }
     }
     
     .taskList__close{
         border-bottom:4px solid red;
         border-top:none;
         color:red;
-
-        &>p{
-            transform: rotate(48deg);
-        }
-    }       
+        font-weight: bold;
+        font-size:1em;
+        
+        &:active{
+            border-bottom:2px solid red; 
+            border-top:0;
+        }    
+    }    
 }  
+
+.taskList__date{
+    align-items:center;
+    display:flex;
+    justify-content:space-between;
+    margin-top:4em;
+
+    .react-datepicker__input-container{
+       &>input{
+           border:none;
+           color:var(--theme-page-text);
+           outline:none;
+           background:transparent;
+           font-size:1em;
+       }
+    }
+    .react-datepicker__month-container{
+        width: 250px;
+    }
+    .react-datepicker__day{
+        font-size:1em;
+     }
+     .react-datepicker__header,.react-datepicker__header--has-time-select{
+         font-size: 0.7em;
+     }
+    
+    .react-datepicker__time-list-item{
+        font-size:0.8em;
+    }
+    
+    .react-datepicker {
+        font-size: 1em;
+        left:-100px;
+    }
+}
