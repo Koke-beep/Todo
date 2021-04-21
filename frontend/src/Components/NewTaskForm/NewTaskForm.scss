@@ -2,12 +2,12 @@
     bottom:-88vh; 
     height:93vh;
     left:0;
-    overflow:hidden;
+    min-width:360px;    
     position:absolute;
     transition: bottom 0.8s;
     user-select:none;
     width:100vw;    
-    z-index:20;
+    z-index:20;   
 
     &>button{
         border:none;
