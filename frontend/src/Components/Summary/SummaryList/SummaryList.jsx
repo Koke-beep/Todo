@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import './SummaryList.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import loadTodo from '../../../Redux/Actions/ActionCreator';
+import { loadTodo } from '../../../Redux/Actions/ActionCreator';
 
 function SummaryList({ data: { taskStatus }, actions }) {
   useEffect(() => {
