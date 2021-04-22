@@ -16,5 +16,12 @@ const initialState = {
     },
     Notes: 143,
   },
+  categories: [
+    ['Healthy', 'green'],
+    ['Challenge', 'yellowgreen'],
+    ['Sport', 'blue'],
+    ['Education', 'orange'],
+    ['Work', 'purple'],
+  ],
 };
 export default initialState;
