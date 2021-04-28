@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React, { useState } from 'react';
 
 import './NewTaskForm.scss';
@@ -5,12 +6,15 @@ import DatePicker from 'react-datepicker';
 import setHours from 'date-fns/setHours';
 import setMinutes from 'date-fns/setMinutes';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Categories from './Categories/Categories';
+import { addNewTask } from '../../Redux/Actions/ActionCreator';
 
-export default function newTaskForm() {
+function newTaskForm({ actions }) {
   const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 30), 16));
   const [taskInfo, setTaskInfo] = useState({
-    task: '',
+    todo: '',
     priority: '',
     date: '',
   });
@@ -21,6 +25,20 @@ export default function newTaskForm() {
     taskListBox = open === true ? taskListBox.style.bottom = '0'
       : taskListBox.style.bottom = '-88vh';
     return taskListBox;
+  }
+
+  function transformDate(taskDate) {
+    const dateMatrix = taskDate.split(' ');
+    const mutatedDate = dateMatrix.slice(0, 5).join(' ');
+    return mutatedDate;
+  }
+
+  function submitFormNewTask() {
+    document.querySelector('.taskList__fields').reset();
+
+    actions.addNewTask(taskInfo);
+    setTaskInfo({ todo: '', priority: '', date: '' });
+    toggleView(false);
   }
 
   return (
@@ -36,7 +54,7 @@ export default function newTaskForm() {
                 required
                 placeholder="Write here..."
                 name="task"
-                onChange={(e) => setTaskInfo({ ...taskInfo, task: e.target.value })}
+                onChange={(e) => setTaskInfo({ ...taskInfo, todo: e.target.value })}
               />
             </label>
           </form>
@@ -46,16 +64,12 @@ export default function newTaskForm() {
             <DatePicker
               selected={startDate}
               onChange={(day) => {
+                const newDateTransformed = transformDate(day.toString());
+
                 setStartDate(day);
-                setTaskInfo({ ...taskInfo, date: day });
+                setTaskInfo({ ...taskInfo, date: newDateTransformed });
               }}
               showTimeSelect
-              excludeTimes={[
-                setHours(setMinutes(new Date(), 0), 17),
-                setHours(setMinutes(new Date(), 30), 18),
-                setHours(setMinutes(new Date(), 30), 19),
-                setHours(setMinutes(new Date(), 30), 17),
-              ]}
               dateFormat="MMMM d, yyyy h:mm aa"
             />
           </div>
@@ -70,17 +84,33 @@ export default function newTaskForm() {
           </div>
         </div>
         <button
-          type="submit"
+          type="button"
           className="taskList__open"
           onClick={() => {
-            toggleView(false);
+            submitFormNewTask();
           }}
         >
           +
         </button>
-        <button className="taskList__close" type="button" onClick={() => toggleView(false)}>x</button>
+        <button
+          className="taskList__close"
+          type="button"
+          onClick={() => {
+            toggleView(false);
+          }}
+        >
+          x
+        </button>
       </div>
 
     </>
   );
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addNewTask }, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(newTaskForm);

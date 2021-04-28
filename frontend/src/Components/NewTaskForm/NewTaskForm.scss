@@ -8,6 +8,7 @@
     user-select:none;
     width:100vw;    
     z-index:20;   
+    background:var(--theme-page-background);
 
     &>button{
         border:none;
@@ -118,8 +119,7 @@
         border:1.5px dotted var(--theme-page-text);
         border-radius:30px;
         color:var(--theme-page-text);
-        margin-top:40px;
-        width:100%;
+        margin-top:40px;        
     }
 }  
 
@@ -148,10 +148,10 @@
     }
     .react-datepicker__day{
         font-size:1em;
-     }
-     .react-datepicker__header,.react-datepicker__header--has-time-select{
-         font-size: 0.7em;
-     }
+    }
+    .react-datepicker__header,.react-datepicker__header--has-time-select{
+        font-size: 0.7em;
+    }
     
     .react-datepicker__time-list-item{
         font-size:0.8em;

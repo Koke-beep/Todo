@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import actionTypes from './ActionTypes';
 import todos from '../Storage/InitialState';
 
@@ -15,5 +14,20 @@ export function loadCategories() {
   return {
     type: actionTypes.LOAD_CATEGORIES,
     data: categories,
+  };
+}
+
+export function loadListOfTask() {
+  const { todoList } = todos;
+  return {
+    type: actionTypes.LOAD_TASK,
+    todoList,
+  };
+}
+
+export function addNewTask(newTask) {
+  return {
+    type: actionTypes.ADD_TASK,
+    newTask,
   };
 }

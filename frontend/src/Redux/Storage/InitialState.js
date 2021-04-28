@@ -23,5 +23,10 @@ const initialState = {
     ['Education', 'orange'],
     ['Work', 'purple'],
   ],
+  todoList: [{
+    date: '7:30 am',
+    todo: 'Acaba esta APP, gas gas gassss',
+    priority: '',
+  }],
 };
 export default initialState;
