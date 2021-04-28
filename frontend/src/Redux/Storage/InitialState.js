@@ -1,20 +1,20 @@
 const initialState = {
   taskStatus: {
-    Ondoing: 16,
-    Overdue: 8,
+    Ondoing: 1,
+    Overdue: 0,
     Task: {
-      done: 26,
-      unfinished: 42,
+      done: 0,
+      unfinished: 1,
     },
     Project: {
-      done: 9,
-      unfinished: 13,
+      done: 0,
+      unfinished: 0,
     },
     Reminder: {
-      done: 33,
-      unfinished: 45,
+      done: 0,
+      unfinished: 1,
     },
-    Notes: 143,
+    Notes: 0,
   },
   categories: [
     ['Healthy', 'green'],
