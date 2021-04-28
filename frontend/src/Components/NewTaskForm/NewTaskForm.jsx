@@ -1,12 +1,23 @@
+/* eslint-disable no-debugger */
 import React, { useState } from 'react';
+
 import './NewTaskForm.scss';
 import DatePicker from 'react-datepicker';
 import setHours from 'date-fns/setHours';
 import setMinutes from 'date-fns/setMinutes';
-import Categories from './Categories/Categories';
 
-export default function newTaskForm() {
-  const [textHolder, setTextHolder] = useState(' ');
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import Categories from './Categories/Categories';
+import { addNewTask } from '../../Redux/Actions/ActionCreator';
+
+function newTaskForm({ actions }) {
+  const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 30), 16));
+  const [taskInfo, setTaskInfo] = useState({
+    todo: '',
+    priority: '',
+    date: '',
+  });
 
   function toggleView(open) {
     let taskListBox = document.querySelector('.taskList__newTask');
@@ -15,18 +26,36 @@ export default function newTaskForm() {
       : taskListBox.style.bottom = '-88vh';
     return taskListBox;
   }
-  const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(), 30), 16));
+
+  function transformDate(taskDate) {
+    const dateMatrix = taskDate.split(' ');
+    const mutatedDate = dateMatrix.slice(0, 5).join(' ');
+    return mutatedDate;
+  }
+
+  function submitFormNewTask() {
+    document.querySelector('.taskList__fields').reset();
+
+    actions.addNewTask(taskInfo);
+    setTaskInfo({ todo: '', priority: '', date: '' });
+    toggleView(false);
+  }
 
   return (
     <>
       <div className="taskList__newTask">
         <button type="button" onClick={() => toggleView(true)}>+</button>
         <div className="taskList__data">
-
           <form className="taskList__fields">
-            <label htmlFor="description">
+            <label htmlFor="depcription">
               Description
-              <input type="text" value={textHolder} onChange={(e) => setTextHolder(e.target.value)} />
+              <input
+                type="text"
+                required
+                placeholder="Write here..."
+                name="task"
+                onChange={(e) => setTaskInfo({ ...taskInfo, todo: e.target.value })}
+              />
             </label>
           </form>
           <Categories />
@@ -34,30 +63,54 @@ export default function newTaskForm() {
             <h5>Date</h5>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(day) => {
+                const newDateTransformed = transformDate(day.toString());
+
+                setStartDate(day);
+                setTaskInfo({ ...taskInfo, date: newDateTransformed });
+              }}
               showTimeSelect
-              excludeTimes={[
-                setHours(setMinutes(new Date(), 0), 17),
-                setHours(setMinutes(new Date(), 30), 18),
-                setHours(setMinutes(new Date(), 30), 19),
-                setHours(setMinutes(new Date(), 30), 17),
-              ]}
               dateFormat="MMMM d, yyyy h:mm aa"
             />
           </div>
 
           <div className="taskList__priority">
             <h5>Priority</h5>
-            <select>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
+            <select onChange={(e) => setTaskInfo({ ...taskInfo, priority: e.target.value })}>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
             </select>
           </div>
         </div>
-        <button className="taskList__close" type="button" onClick={() => toggleView(false)}>x</button>
+        <button
+          type="button"
+          className="taskList__open"
+          onClick={() => {
+            submitFormNewTask();
+          }}
+        >
+          +
+        </button>
+        <button
+          className="taskList__close"
+          type="button"
+          onClick={() => {
+            toggleView(false);
+          }}
+        >
+          x
+        </button>
       </div>
 
     </>
   );
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ addNewTask }, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(newTaskForm);

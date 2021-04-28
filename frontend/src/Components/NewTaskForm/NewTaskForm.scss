@@ -8,6 +8,7 @@
     user-select:none;
     width:100vw;    
     z-index:20;   
+    background:var(--theme-page-background);
 
     &>button{
         border:none;
@@ -44,7 +45,7 @@
                 outline:none;
                 width:100%;
             }
-        }
+        }    
 
         .taskList__categories{
             margin-top:1em;
@@ -87,8 +88,7 @@
                 color:var(--theme-page-text);
                 outline:none;
                 border:0;
-                font-size: 0.9em;
-                
+                font-size: 0.9em;                
 
                 &>option{
                     color:var(--theme-page-text);
@@ -101,6 +101,7 @@
     .taskList__close{
         position:absolute;
         bottom:0;
+        left:0;
         border-bottom:6px solid red;
         border-top:none;
         color:red;
@@ -111,7 +112,15 @@
             border-bottom:2px solid red; 
             border-top:0;
         }    
-    }    
+    }       
+
+    .taskList__open{
+        background:transparent;
+        border:1.5px dotted var(--theme-page-text);
+        border-radius:30px;
+        color:var(--theme-page-text);
+        margin-top:40px;        
+    }
 }  
 
 .taskList__date{
@@ -139,10 +148,10 @@
     }
     .react-datepicker__day{
         font-size:1em;
-     }
-     .react-datepicker__header,.react-datepicker__header--has-time-select{
-         font-size: 0.7em;
-     }
+    }
+    .react-datepicker__header,.react-datepicker__header--has-time-select{
+        font-size: 0.7em;
+    }
     
     .react-datepicker__time-list-item{
         font-size:0.8em;
