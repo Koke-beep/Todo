@@ -76,7 +76,10 @@ function newTaskForm({ actions }) {
 
           <div className="taskList__priority">
             <h5>Priority</h5>
-            <select onChange={(e) => setTaskInfo({ ...taskInfo, priority: e.target.value })}>
+            <select onChange={(e) => {
+              setTaskInfo({ ...taskInfo, priority: e.target.value });
+            }}
+            >
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>
