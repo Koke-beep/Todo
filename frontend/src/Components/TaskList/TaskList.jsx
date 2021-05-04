@@ -10,7 +10,6 @@ function taskList({ todoList, actions }) {
   useEffect(() => {
     actions.loadTodo();
   }, []);
-
   return (
     <>
       <section id="taskList__box">

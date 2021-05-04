@@ -26,7 +26,7 @@ const initialState = {
   todoList: [{
     date: '7:30 am',
     todo: 'Acaba esta APP, gas gas gassss',
-    priority: '',
+    priority: 'high',
   }],
 };
 export default initialState;
