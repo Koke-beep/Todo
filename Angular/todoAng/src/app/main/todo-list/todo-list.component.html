@@ -1,0 +1,9 @@
+<ul *ngIf="todoList">
+  <li class="todo__list"
+  *ngFor="let task of todoList">
+    <button type="button"
+    (click)="deleteTask(task)">X</button>
+    <p>{{task}}</p>
+    <button type="button">v</button>
+  </li>
+</ul>

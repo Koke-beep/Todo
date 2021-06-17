@@ -1,0 +1,11 @@
+@mixin centered($display:flex, $justify-content: center, $align-items:center, $direction:column){
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $direction;
+}
+
+#fatherBox{
+  width: 100vw;
+  @include centered;
+}
